@@ -7,12 +7,28 @@ namespace MvcMovie.Controllers
     {
         // 
         // GET: /HelloWorld/
-
+        [HttpGet]
         public IActionResult Index()
         {
-            return Content("<h1>Hello World</h1>", "text/html");
-        }
+            string html = "<form method='post'>" +
+            "<input type='text' name='name' ?>" +
+            "<input type+'submit value='Greet me!' />" +
+            "</form>";
 
+            return Redirect("/Hello/Goodbye");
+        }
+        [Route("/Hello")]
+        [HttpPost]
+        public IActionResult Display(string name = "World")
+        {
+            return Content(string.Format("<h1>Hello {0}</h1>", name), "text/html");
+        }
+        [Route("/Hello/{name}")]
+        public IActionResult Index2(string name)
+        {
+            return Content(string.Format("<h1>Hello {0}</h1>", name), "text/html");
+
+        }
         public IActionResult Goodbye()
         {
             return Content("Goodbye World");
