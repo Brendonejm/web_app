@@ -8,17 +8,21 @@ namespace MvcMovie.Controllers
         // 
         // GET: /HelloWorld/
 
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return Content("<h1>Hello World</h1>", "text/html");
         }
 
+        public IActionResult Goodbye()
+        {
+            return Content("Goodbye World");
+        }
         // 
         // GET: /HelloWorld/Welcome/ 
 
         public string Welcome(string Rick, int ID = 1)
-{
-    return HtmlEncoder.Default.Encode($"Hello {Rick}, ID: {3}");
-}
+        {
+            return HtmlEncoder.Default.Encode($"Hello {Rick}, ID: {3}");
+        }
     }
 }
